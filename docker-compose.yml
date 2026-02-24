@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  caddy:
+    image: docker.xuanyuan.run/library/caddy:2.11  # 稳定版，也可用 caddy:2-alpine（更小体积）
+    container_name: caddy
+    restart: unless-stopped  # 开机自启、异常重启
+    ports:
+      - "80:80"   # HTTP 端口（必须开放，用于 Let's Encrypt 验证）
+      - "443:443" # HTTPS 端口
+      - "443:443/udp" # HTTP/3 (QUIC) 端口（可选，开启后支持 HTTP/3）
+    volumes:
+      # 映射 Caddyfile 配置文件
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      # 持久化 Caddy 自动生成的证书、缓存等数据
+      - ./caddy/data:/data
+      # 持久化 Caddy 自动生成的配置文件
+      - ./caddy/config:/config
+      # 映射静态网站文件目录
+      - ./www:/usr/share/caddy
+    # 可选：添加环境变量（如自定义证书服务器）
+    environment:
+      - TZ=Asia/Shanghai  # 设置时区，避免日志时间错乱
+    # 连接共享网络，与其他服务通信
+    networks:
+      - jusi_shared_network
+
+networks:
+  jusi_shared_network:
+    external: true
+    name: jusi_shared_network

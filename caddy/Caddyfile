@@ -1,0 +1,28 @@
+# 示例 1：静态站点（自动 HTTPS）
+jusiai.com www.jusiai.com {
+    root * /usr/share/caddy  # 对应容器内路径，映射到宿主机 ~/caddy/www
+    file_server             # 启用静态文件服务
+    # 可选：开启目录浏览（如需展示文件列表）
+    # file_server browse
+}
+
+# Web 服务，反向代理（自动 HTTPS）
+# meet.jusiai.com {
+#     reverse_proxy 172.17.0.1:8080  # 172.17.0.1 是宿主机在 Docker 内的 IP
+# }
+
+# 登录服务，反向代理（自动 HTTPS）
+login.jusiai.com {
+    reverse_proxy 172.17.0.1:8000  # 172.17.0.1 是宿主机在 Docker 内的 IP
+}
+
+# API 服务，反向代理（自动 HTTPS）
+api.jusiai.com {
+    reverse_proxy 172.17.0.1:9000  # 172.17.0.1 是宿主机在 Docker 内的 IP
+}
+
+# 示例 3：纯 IP 访问（无域名，关闭自动 HTTPS）
+# :80 {
+#     root * /usr/share/caddy
+#     file_server
+# }
