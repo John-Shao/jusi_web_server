@@ -17,7 +17,7 @@ login.jusiai.com {
 }
 
 # API 服务，反向代理（自动 HTTPS）
-api.jusiai.com {
+service.jusiai.com {
     reverse_proxy 172.17.0.1:13102  # 172.17.0.1 是宿主机在 Docker 内的 IP
 }
 
