@@ -1,6 +1,13 @@
 # 示例 1：静态站点（自动 HTTPS）
 jusiai.com www.jusiai.com {
     root * /usr/share/caddy  # 对应容器内路径，映射到宿主机 ~/caddy/www
+    
+    # 配置 .well-known 目录中文件的 MIME 类型
+    @wellknown {
+        path /.well-known/apple-app-site-association* /.well-known/assetlinks.json*
+    }
+    header @wellknown Content-Type "application/json; charset=utf-8"
+    
     file_server             # 启用静态文件服务
     # 可选：开启目录浏览（如需展示文件列表）
     # file_server browse

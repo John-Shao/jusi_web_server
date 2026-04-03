@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.jusi.jusiai.meeting",
+      "sha256_cert_fingerprints": [
+        "0E:F7:11:51:6E:D8:EC:F6:40:F5:81:B7:42:B2:33:4F:A1:DA:59:D3:A4:E1:4B:DD:FE:71:8C:05:F3:A5:9F:95",
+        "F4:00:1C:ED:18:4F:DD:88:01:9C:C2:0C:4C:13:AD:0E:E1:F0:E7:7F:D2:A1:A4:B8:80:AA:47:F1:7C:D2:09:E2"
+      ]
+    }
+  }
+]

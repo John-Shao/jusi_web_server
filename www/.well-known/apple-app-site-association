@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["57FM9VKSJ8.com.jusiai"],
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "加入会议房间"
+          }
+        ]
+      }
+    ]
+  }
+}
